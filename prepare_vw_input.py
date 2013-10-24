@@ -1,19 +1,28 @@
 import csv
+import sys
 import re
 
 split_rule = '\'|\"|:|;|\. |,| |\*|\n|\t|\(|\)|\?|\!|\\|/|\{|\}|\<|\>|[|]'
 
-f = open("current_tag.tmp")
-glotag = f.read().strip()
+if (len(sys.argv) != 4):
+    print "Run: python prepare_vw_input.py <tag> <input_filename> <output_filename>"
+    sys.exit(0)
 
-g = open("current_vw_data.tmp", "w")
+glotag = sys.argv[1]
+filename = sys.argv[2]
+outp = sys.argv[3]
 
-with open('Train.csv', 'rb') as f:
+g = open(outp, "w")
+
+with open(filename, 'rb') as f:
     reader = csv.reader(f)
     for row in reader:
         break
     for row in reader:
-        el = row[3].strip()
+        if (len(row) < 4):
+            el = ""
+        else:
+            el = row[3].strip()
         el = re.split(split_rule, el)
         fnd = False
         for word in el:
