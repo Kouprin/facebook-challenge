@@ -16,7 +16,7 @@ for i in xrange(6034196, 12047532 + 1):
     d[i] = ""
 
 pred = os.listdir("./predictions")
-print pred
+print >> sys.stderr, len(pred), pred
 for fil in pred:
     g = open("./predictions/" + fil)
     for line in g:
@@ -60,5 +60,5 @@ r = tp * 1.0 / (tp + fn + 1e-15)
 f1 = 2.0 * p * r / (p + r + 1e-15)
 #print >> sys.stderr, tp, fn, fp
 fi = open("./tmp/score", "a")
-fi.write(str(tp) + "\t" + str(fp) + "\t" + str(fn) + "\t" + str(f1) + "\n")
+fi.write(str(tp) + "\t" + str(fp) + "\t" + str(fn) + "\t" + str(p) + "\t" + str(r) + "\t" + str(f1) + "\n")
 print >> sys.stderr, p,r,f1

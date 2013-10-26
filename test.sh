@@ -16,6 +16,7 @@ do
 
     echo " -- testing model..."
     cat ./tmp/current_vw_data.tmp | ~/vowpal_wabbit-6.1/vw -t -i ./models/model_$line.vw -p ./tmp/vw_input.tmp --quiet
+    echo " -- calculating border..."
     border=$(python evaluate_vw_output.py $line ./data/train1.tsv tmp/vw_input.tmp)
 
     echo " -- preparing test data..."
