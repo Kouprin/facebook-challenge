@@ -1,4 +1,4 @@
-f = open("./data/train_prepared.tsv")
+f = open("./data/train.tsv")
 a = open("./data/train1.tsv", "w")
 b = open("./data/train2.tsv", "w")
 
